@@ -106,10 +106,13 @@ services:
 
 ## 3. Subir Ambiente
 Na raiz do projeto:
+
 ```
 docker compose up -d
 ```
+
 Acessar Airflow:
+
 ```
 http://localhost:8080
 ```
@@ -148,14 +151,15 @@ Pode usar:
 ### 7.1 Extract
 
 #### airflow/scripts/extract.py
+
 ```
 import pandas as pd
 
 def extract_data():
     df = pd.read_csv('/opt/airflow/data/vendas.csv')
     return df
-
 ```
+
 ### 7.2 Transform
 
 #### airflow/scripts/transform.py
@@ -170,10 +174,11 @@ def transform_data(df):
     df['valor_total'] = df['quantidade'] * df['preco']
 
     return df
-
 ```
+
 ### 7.3 Load
 #### airflow/scripts/load.py
+
 ```
 from sqlalchemy import create_engine
 
@@ -189,10 +194,12 @@ def load_data(df):
         if_exists='append',
         index=False
     )
-
     ```
+    
 ## 8. Criar DAG do Airflow
+
 #### airflow/dags/sales_etl_dag.py
+
 ```
 from airflow import DAG
 from airflow.operators.python import PythonOperator
@@ -231,7 +238,9 @@ with DAG(
 ```
 
 ## 9. Instalar Dependências no Airflow
+
 #### airflow/requirements.txt
+
 ```
 pandas
 sqlalchemy
@@ -246,10 +255,13 @@ No Airflow:
 3. Clicar em "Trigger DAG"
 
 #### Fluxo:
+
 ```
 CSV → ETL → PostgreSQL
 ```
+
 ## 11. Validar Dados no PostgreSQL
+
 ```
 SELECT * FROM fato_vendas;
 ```
@@ -260,32 +272,44 @@ Abrir:
 * Microsoft Power BI
 
 ### Passos
+
 #### Obter Dados
+
 ```
 PostgreSQL
 ```
+
 #### Configurar conexão
 Servidor:
+
 ```
 localhost
 ```
+
 Banco:
-```
-dw_vendas
 
 ```
+dw_vendas
+```
+
 Usuário:
+
 ```
 airflow
 ```
+
 Senha: 
+
 ```
 airflow
 ```
+
 ## 13. Modelagem no Power BI
+
 Criar medidas:
 
 ### Total Vendas
-```DAX`
+
+```
 Total Vendas = SUM(fato_vendas[valor_total])
 ````
