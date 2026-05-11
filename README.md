@@ -313,3 +313,7 @@ Criar medidas:
 ```
 Total Vendas = SUM(fato_vendas[valor_total])
 ```
+## Quantidade Vendidas
+```
+Qtd Vendida = SUM(fato_vendas[quantidade])
+```
