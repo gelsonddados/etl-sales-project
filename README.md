@@ -109,4 +109,14 @@ Na raiz do projeto:
 ```
 docker compose up -d
 ```
+Acessar Airflow:
+```
+http://localhost:8080
+```
+Usuário e senha normalmente:
 
+```
+airflow
+airflow
+
+```
