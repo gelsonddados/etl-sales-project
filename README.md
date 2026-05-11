@@ -1,6 +1,4 @@
-# etl-sales-project
-
-#Projeto Profissional de ETL com Airflow + PostgreSQL + Power BI
+# Projeto Profissional de ETL com Airflow + PostgreSQL + Power BI
 
 ##Arquitetura do projeto:
 
