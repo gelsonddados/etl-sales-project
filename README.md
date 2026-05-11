@@ -317,3 +317,122 @@ Total Vendas = SUM(fato_vendas[valor_total])
 ```
 Qtd Vendida = SUM(fato_vendas[quantidade])
 ```
+
+```
+Ticket Médio
+Ticket Medio = AVERAGE(fato_vendas[valor_total])
+14. Dashboard Executivo
+
+Criar:
+
+Cards
+Total de vendas
+Quantidade vendida
+Ticket médio
+Gráficos
+Barras
+Categoria x Valor Total
+Linha
+Vendas por Data
+Pizza
+Participação por Categoria
+15. Melhorias Profissionais
+Camadas Bronze / Silver / Gold
+Bronze
+
+Dados brutos
+
+Silver
+
+Dados tratados
+
+Gold
+
+Dados analíticos
+
+16. Agendamento Automático
+
+Airflow executa automaticamente:
+
+Todos os dias
+
+Pode alterar:
+
+schedule='0 8 * * *'
+
+Executa:
+
+Todos os dias às 08:00
+17. Conceitos Profissionais Aplicados
+ETL
+Extract
+Transform
+Load
+Orquestração
+
+Airflow controla:
+
+horários
+dependências
+falhas
+retries
+logs
+Data Warehouse
+
+PostgreSQL armazena:
+
+histórico
+métricas
+fatos analíticos
+BI
+
+Power BI consome:
+
+métricas
+KPIs
+dashboards
+18. Evolução Profissional do Projeto
+
+Depois pode adicionar:
+
+Fontes reais
+APIs
+ERP
+CRM
+Excel
+SAP
+Cloud
+Amazon Web Services
+Microsoft Azure
+Google Cloud
+Ferramentas Avançadas
+dbt
+Apache Spark
+Apache Kafka
+19. Resultado Final
+
+Você terá:
+
+✅ Pipeline ETL profissional
+✅ Orquestração com Airflow
+✅ Data Warehouse PostgreSQL
+✅ Dashboard Power BI
+✅ Automação diária
+✅ Projeto para portfólio profissional
+
+20. Próximo Nível
+
+Depois deste projeto, você pode evoluir para:
+
+Data Lake
+CDC
+Streaming
+ELT
+Medallion Architecture
+Kubernetes
+CI/CD de dados
+Data Quality
+Observabilidade
+Data Governance
+
+```
