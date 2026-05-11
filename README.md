@@ -120,3 +120,56 @@ airflow
 airflow
 
 ```
+## 6. Criar Banco e Tabelas
+sql/create_tables.sql
+
+```
+CREATE TABLE fato_vendas (
+    id_venda INT PRIMARY KEY,
+    cliente VARCHAR(100),
+    produto VARCHAR(100),
+    categoria VARCHAR(100),
+    quantidade INT,
+    preco NUMERIC(10,2),
+    valor_total NUMERIC(10,2),
+    data_venda DATE
+);
+
+```
+Execute no PostgreSQL.
+
+Pode usar:
+
+* pgAdmin
+* DBeaver
+
+## 7. Criar Processo ETL
+
+### 7.1 Extract
+
+#### airflow/scripts/extract.py
+```
+import pandas as pd
+
+def extract_data():
+    df = pd.read_csv('/opt/airflow/data/vendas.csv')
+    return df
+
+```
+### 7.2 Transform
+
+#### airflow/scripts/transform.py
+
+```
+def transform_data(df):
+
+    # remover nulos
+    df = df.dropna()
+
+    # criar valor total
+    df['valor_total'] = df['quantidade'] * df['preco']
+
+    return df
+
+```
+
