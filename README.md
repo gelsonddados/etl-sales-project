@@ -312,4 +312,4 @@ Criar medidas:
 
 ```
 Total Vendas = SUM(fato_vendas[valor_total])
-````
+```
