@@ -172,4 +172,120 @@ def transform_data(df):
     return df
 
 ```
+### 7.3 Load
+#### airflow/scripts/load.py
+```
+from sqlalchemy import create_engine
 
+def load_data(df):
+
+    engine = create_engine(
+        'postgresql://airflow:airflow@postgres:5432/dw_vendas'
+    )
+
+    df.to_sql(
+        'fato_vendas',
+        engine,
+        if_exists='append',
+        index=False
+    )
+
+    ```
+## 8. Criar DAG do Airflow
+#### airflow/dags/sales_etl_dag.py
+```
+from airflow import DAG
+from airflow.operators.python import PythonOperator
+from datetime import datetime
+
+from scripts.extract import extract_data
+from scripts.transform import transform_data
+from scripts.load import load_data
+
+default_args = {
+    'owner': 'data-team'
+}
+
+def etl():
+
+    df = extract_data()
+
+    df = transform_data(df)
+
+    load_data(df)
+
+with DAG(
+    dag_id='sales_etl_pipeline',
+    start_date=datetime(2026, 1, 1),
+    schedule='@daily',
+    catchup=False,
+    default_args=default_args
+) as dag:
+
+    run_etl = PythonOperator(
+        task_id='run_etl',
+        python_callable=etl
+    )
+
+    run_etl
+```
+
+## 9. Instalar Dependências no Airflow
+#### airflow/requirements.txt
+```
+pandas
+sqlalchemy
+psycopg2-binary
+```
+## 10. Executar Pipeline
+
+No Airflow:
+
+1. Abrir DAG
+2. Ativar DAG
+3. Clicar em "Trigger DAG"
+
+#### Fluxo:
+```
+CSV → ETL → PostgreSQL
+```
+## 11. Validar Dados no PostgreSQL
+```
+SELECT * FROM fato_vendas;
+```
+## 12. Conectar Power BI
+
+Abrir:
+
+* Microsoft Power BI
+
+### Passos
+#### Obter Dados
+```
+PostgreSQL
+```
+#### Configurar conexão
+Servidor:
+```
+localhost
+```
+Banco:
+```
+dw_vendas
+
+```
+Usuário:
+```
+airflow
+```
+Senha: 
+```
+airflow
+```
+## 13. Modelagem no Power BI
+Criar medidas:
+
+### Total Vendas
+```DAX`
+Total Vendas = SUM(fato_vendas[valor_total])
+````
