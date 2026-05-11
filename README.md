@@ -2,15 +2,15 @@
 
 ## Arquitetura do projeto:
 ```
-Fonte de Dados (CSV/API)<br/>
-        ↓<br/>
-      ETL<br/>
-(Apache Airflow)<br/>
-        ↓<br/>
- PostgreSQL (Data Warehouse)<br/>
-        ↓<br/>
-    Power BI<br/>
-(Dashboard Executivo)<br/>
+Fonte de Dados (CSV/API)
+        ↓
+      ETL
+(Apache Airflow)
+        ↓
+ PostgreSQL (Data Warehouse)
+        ↓
+    Power BI
+(Dashboard Executivo)
 ```
 ## Stack utilizada:
 
