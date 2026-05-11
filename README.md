@@ -1,6 +1,6 @@
 # Projeto Profissional de ETL com Airflow + PostgreSQL + Power BI
 
-##Arquitetura do projeto:##
+## Arquitetura do projeto:##
 
 Fonte de Dados (CSV/API)
         ↓
@@ -12,7 +12,7 @@ Fonte de Dados (CSV/API)
     Power BI
 (Dashboard Executivo)
 
-##Stack utilizada:##
+## Stack utilizada:##
 
 * Apache Airflow
 * PostgreSQL
